@@ -1,0 +1,320 @@
+/* Ahad Barber dashboard — same "vault" look as the crypto exchange dashboard */
+.vault-shell {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  color: #09090b;
+  background: #fff;
+  border: 1px solid #e4e4e7;
+  border-radius: 28px;
+  box-shadow: 0 40px 90px -40px rgba(39, 39, 42, 0.45);
+  animation: vpop 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+@keyframes vpop {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.vault-main {
+  position: relative;
+  background:
+    radial-gradient(
+      900px 480px at 100% -10%,
+      rgba(39, 39, 42, 0.07),
+      transparent 60%
+    ),
+    linear-gradient(180deg, #fff, #f4f4f5);
+}
+
+.vault-side {
+  position: relative;
+  overflow: hidden;
+  color: #fff;
+  background: linear-gradient(165deg, #18181b 0%, #09090b 55%, #000000 100%);
+  border-bottom: 1px solid rgba(161, 161, 170, 0.18);
+}
+@media (min-width: 1024px) {
+  .vault-side {
+    border-bottom: 0;
+    border-right: 1px solid rgba(161, 161, 170, 0.16);
+  }
+}
+.vault-side::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      420px 320px at -10% -8%,
+      rgba(161, 161, 170, 0.5),
+      transparent 65%
+    ),
+    radial-gradient(
+      380px 300px at 110% 108%,
+      rgba(161, 161, 170, 0.28),
+      transparent 65%
+    );
+}
+.vault-side::after {
+  content: "";
+  position: absolute;
+  right: -190px;
+  top: 34%;
+  width: 380px;
+  height: 380px;
+  border-radius: 50%;
+  pointer-events: none;
+  border: 1px dashed rgba(161, 161, 170, 0.22);
+  animation: kxspin 70s linear infinite;
+}
+.vault-side > * {
+  position: relative;
+  z-index: 1;
+}
+
+.vside-user {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(161, 161, 170, 0.22);
+  transition:
+    background 0.3s,
+    border-color 0.3s,
+    transform 0.3s;
+}
+.vside-user:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(161, 161, 170, 0.5);
+  transform: translateY(-2px);
+}
+.vside-avatar {
+  display: inline-flex;
+  width: 44px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-weight: 700;
+  background: linear-gradient(135deg, #3f3f46, #18181b);
+  box-shadow: 0 0 0 2px rgba(161, 161, 170, 0.5);
+}
+
+.vault-nav-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 14px;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: left;
+  color: rgba(244, 244, 245, 0.72);
+  cursor: pointer;
+  transition:
+    background 0.25s,
+    color 0.25s,
+    transform 0.25s;
+}
+.vault-nav-item svg {
+  transition: transform 0.3s cubic-bezier(0.2, 0.9, 0.3, 1.4);
+}
+.vault-nav-item:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateX(4px);
+}
+.vault-nav-item:hover svg {
+  transform: scale(1.18) rotate(-6deg);
+}
+.vault-nav-item[aria-current="page"] {
+  color: #18181b;
+  font-weight: 600;
+  background: linear-gradient(135deg, #fff, #d4d4d8);
+  box-shadow: 0 10px 24px -12px rgba(161, 161, 170, 0.8);
+  transform: none;
+}
+.vault-badge {
+  margin-left: auto;
+  min-width: 22px;
+  padding: 1px 7px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  text-align: center;
+  background: rgba(161, 161, 170, 0.25);
+}
+.vault-nav-item[aria-current="page"] .vault-badge {
+  background: rgba(39, 39, 42, 0.12);
+}
+
+.vault-chips {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+}
+.vault-chip {
+  white-space: nowrap;
+  padding: 7px 14px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #18181b;
+  background: #fff;
+  border: 1px solid #e4e4e7;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+.vault-chip:hover {
+  border-color: #27272a;
+  transform: translateY(-2px);
+}
+.vault-chip[aria-current="true"] {
+  color: #fff;
+  background: linear-gradient(135deg, #27272a, #18181b);
+  border-color: transparent;
+  box-shadow: 0 8px 20px -10px rgba(39, 39, 42, 0.8);
+}
+
+.vault-card {
+  position: relative;
+  border-radius: 20px;
+  background: #fff;
+  border: 1px solid #e4e4e7;
+  box-shadow: 0 12px 34px -22px rgba(39, 39, 42, 0.35);
+  transition:
+    transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1),
+    border-color 0.35s,
+    box-shadow 0.4s;
+  animation: vpop 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+.vault-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(39, 39, 42, 0.5);
+  box-shadow: 0 26px 56px -28px rgba(39, 39, 42, 0.45);
+}
+.vault-card.dark {
+  color: #fff;
+  border: 0;
+  background: linear-gradient(135deg, #27272a, #09090b);
+}
+.vault-card.dark::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(
+    115deg,
+    transparent 35%,
+    rgba(255, 255, 255, 0.16) 50%,
+    transparent 65%
+  );
+  background-size: 250% 100%;
+  background-position: 150% 0;
+  transition: background-position 1s ease;
+}
+.vault-card.dark:hover::after {
+  background-position: -50% 0;
+}
+
+.vbar {
+  height: 10px;
+  border-radius: 999px;
+  overflow: hidden;
+  display: flex;
+  background: #e4e4e7;
+}
+.vbar > span {
+  display: block;
+  height: 100%;
+  transition: width 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.vrow {
+  display: grid;
+  grid-template-columns: 130px 1fr 28px;
+  align-items: center;
+  gap: 12px;
+  font-size: 13px;
+  padding: 6px 8px;
+  border-radius: 10px;
+  transition: background 0.25s;
+}
+.vrow:hover {
+  background: rgba(39, 39, 42, 0.06);
+}
+
+.vtable {
+  width: 100%;
+  min-width: 720px;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 14px;
+  text-align: left;
+}
+.vtable th {
+  padding: 12px 16px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #18181b;
+  background: rgba(39, 39, 42, 0.045);
+}
+.vtable td {
+  padding: 14px 16px;
+  border-top: 1px solid rgba(39, 39, 42, 0.08);
+}
+.vtable tbody tr {
+  transition: background 0.3s;
+}
+.vtable tbody tr:hover {
+  background: linear-gradient(90deg, rgba(39, 39, 42, 0.07), transparent 75%);
+}
+.vtable tbody td:first-child {
+  box-shadow: inset 0 0 0 0 #27272a;
+  transition: box-shadow 0.25s;
+}
+.vtable tbody tr:hover td:first-child {
+  box-shadow: inset 3px 0 0 0 #27272a;
+}
+
+.vbtn {
+  padding: 7px 14px;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    transform 0.25s,
+    box-shadow 0.3s,
+    background 0.25s;
+}
+.vbtn:hover {
+  transform: translateY(-2px);
+}
+.vbtn:active {
+  transform: scale(0.95);
+}
+.vbtn-ok {
+  color: #fff;
+  background: linear-gradient(135deg, #27272a, #18181b);
+  box-shadow: 0 6px 16px -8px rgba(39, 39, 42, 0.9);
+}
+.vbtn-no {
+  color: #be123c;
+  background: rgba(244, 63, 94, 0.1);
+}
+.vbtn-no:hover {
+  background: rgba(244, 63, 94, 0.2);
+}
