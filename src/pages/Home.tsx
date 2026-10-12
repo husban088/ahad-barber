@@ -60,11 +60,11 @@ export default function Home() {
       <section className="kx-hero">
         <HeroVideo src={HERO_VIDEO} />
         <div className="kx-guilloche" />
-        <div className="kx-hero-inner mx-auto grid max-w-7xl items-center gap-16 px-6 py-16 md:grid-cols-2 md:py-24">
+        <div className="kx-hero-inner mx-auto grid max-w-7xl items-center gap-12 px-4 py-12 sm:px-6 md:grid-cols-2 md:gap-16 md:py-24">
           <div>
             <p className="hero-in kx-live">OPEN NOW · BARBER SINCE 2019</p>
             <h1
-              className="hero-in mt-5 font-display text-5xl font-black leading-[1.05] sm:text-7xl"
+              className="hero-in mt-5 font-display text-[2.6rem] font-black leading-[1.08] min-[400px]:text-5xl sm:text-6xl lg:text-7xl"
               style={{ animationDelay: ".2s" }}
             >
               A sharp cut,
@@ -79,7 +79,7 @@ export default function Home() {
               every client who sits down.
             </p>
             <div
-              className="hero-in mt-9 flex flex-wrap gap-4"
+              className="hero-in mt-8 flex flex-wrap gap-3 sm:mt-9 sm:gap-4"
               style={{ animationDelay: ".6s" }}
             >
               <Link to="/book" className="kx-btn-light">
@@ -90,7 +90,7 @@ export default function Home() {
               </Link>
             </div>
             <div
-              className="hero-in mt-10 grid max-w-md grid-cols-3 gap-3"
+              className="hero-in mt-8 grid max-w-md grid-cols-3 gap-2.5 sm:mt-10 sm:gap-3"
               style={{ animationDelay: ".8s" }}
             >
               {[
@@ -98,7 +98,7 @@ export default function Home() {
                 ["6", "Services"],
                 ["10–10", "Daily"],
               ].map(([n, l]) => (
-                <div key={l} className="kx-glass px-4 py-3">
+                <div key={l} className="kx-glass px-3 py-3 sm:px-4">
                   <p className="font-display text-2xl font-bold">{n}</p>
                   <p className="kx-eyebrow-light !text-[9px]">{l}</p>
                 </div>
@@ -140,7 +140,7 @@ export default function Home() {
 
       {/* ================= WHY ================= */}
       <section className="kx-page">
-        <div className="mx-auto max-w-7xl px-6 py-24">
+        <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24">
           <Reveal>
             <p className="kx-eyebrow">WHY AHAD</p>
             <h2 className="mt-2 font-display text-4xl font-bold sm:text-5xl">
@@ -183,8 +183,8 @@ export default function Home() {
       <TrendingStyles />
 
       {/* ================= POPULAR SERVICES ================= */}
-      <section className="bg-navy-50 py-24">
-        <div className="mx-auto max-w-7xl px-6">
+      <section id="popular" className="bg-navy-50 py-16 sm:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <Reveal className="flex items-end justify-between gap-4">
             <div>
               <p className="kx-eyebrow">SIGNATURE MENU</p>
@@ -199,7 +199,7 @@ export default function Home() {
               ALL SERVICES
             </Link>
           </Reveal>
-          <div className="mt-12 grid gap-8 md:grid-cols-3">
+          <div className="mt-10 grid gap-6 sm:mt-12 sm:gap-8 md:grid-cols-3">
             {services.slice(0, 3).map((s, i) => (
               <Reveal
                 key={s.slug}
@@ -210,7 +210,11 @@ export default function Home() {
                   <Photo
                     src={s.img}
                     alt={s.name}
-                    className="aspect-[4/3] w-full"
+                    fit="cover"
+                    pos={s.pos}
+                    then={s.then}
+                    art={s.art}
+                    className="aspect-[4/5] w-full"
                   />
                   <span className="kx-chip absolute right-4 top-4 z-[2] !bg-white !text-navy-700 shadow-lg">
                     {s.price}
@@ -236,7 +240,7 @@ export default function Home() {
       <Showreel />
 
       {/* ================= STEPS ================= */}
-      <section className="mx-auto max-w-7xl px-6 py-24">
+      <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24">
         <Reveal>
           <p className="kx-eyebrow">HOW IT WORKS</p>
           <h2 className="mt-2 font-display text-4xl font-bold sm:text-5xl">
@@ -260,15 +264,15 @@ export default function Home() {
       </section>
 
       {/* ================= GALLERY ================= */}
-      <section className="kx-page">
-        <div className="mx-auto max-w-7xl px-6 py-24">
+      <section id="gallery" className="kx-page">
+        <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24">
           <Reveal>
             <p className="kx-eyebrow">THE ATELIER</p>
             <h2 className="mt-2 font-display text-4xl font-bold sm:text-5xl">
               Inside the shop
             </h2>
           </Reveal>
-          <div className="mt-12 grid grid-cols-2 gap-4 md:grid-cols-4">
+          <div className="mt-10 grid grid-cols-2 gap-3 pb-8 sm:mt-12 sm:gap-4 md:grid-cols-4">
             {gallery.map((g, i) => (
               <Reveal
                 key={g.label}
@@ -279,6 +283,9 @@ export default function Home() {
                 <Photo
                   src={g.img}
                   alt={g.label}
+                  fit="cover"
+                  pos={g.pos}
+                  then={g.then}
                   className="aspect-[3/4] w-full"
                 />
                 <div className="kx-tile-cap">
@@ -291,10 +298,10 @@ export default function Home() {
       </section>
 
       {/* ================= CTA ================= */}
-      <section className="kx-hero py-20 text-center">
+      <section className="kx-hero py-16 text-center sm:py-20">
         <div className="kx-guilloche" />
         <Reveal className="kx-hero-inner px-6">
-          <h2 className="font-display text-4xl font-black sm:text-6xl">
+          <h2 className="font-display text-4xl font-black sm:text-5xl lg:text-6xl">
             Your chair is <span className="gold-text-light">waiting.</span>
           </h2>
           <p className="kx-muted-light mx-auto mt-4 max-w-md">

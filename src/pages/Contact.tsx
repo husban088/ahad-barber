@@ -38,12 +38,12 @@ export default function Contact() {
   ];
   return (
     <section className="kx-page min-h-[calc(100vh-68px)]">
-      <div className="mx-auto grid max-w-6xl gap-8 px-6 py-16 md:grid-cols-2">
-        <Reveal from="left" className="kx-hero rounded-3xl p-10">
+      <div className="mx-auto grid max-w-6xl gap-6 px-4 py-10 sm:gap-8 sm:px-6 sm:py-16 md:grid-cols-2">
+        <Reveal from="left" className="kx-hero rounded-3xl p-6 sm:p-10">
           <div className="kx-guilloche" />
           <div className="kx-hero-inner">
             <p className="kx-eyebrow-light">CONTACT</p>
-            <h1 className="mt-3 font-display text-5xl font-black">
+            <h1 className="mt-3 font-display text-4xl font-black min-[400px]:text-5xl">
               Say <span className="gold-text-light">hello</span>
             </h1>
             <p className="kx-muted-light mt-5 max-w-sm text-sm">
@@ -52,15 +52,15 @@ export default function Contact() {
             </p>
             <div className="mt-10 space-y-3">
               {info.map(([l, v]) => (
-                <div key={l} className="kx-glass px-5 py-4">
+                <div key={l} className="kx-glass px-4 py-4 sm:px-5">
                   <p className="kx-eyebrow-light !text-[10px]">{l}</p>
-                  <p className="mt-1 font-semibold">{v}</p>
+                  <p className="mt-1 break-words font-semibold">{v}</p>
                 </div>
               ))}
             </div>
           </div>
         </Reveal>
-        <Reveal from="right" className="kx-card !rounded-3xl p-8 sm:p-10">
+        <Reveal from="right" className="kx-card !rounded-3xl p-5 sm:p-10">
           <form onSubmit={send} className="grid gap-5">
             <input
               name="name"

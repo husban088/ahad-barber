@@ -25,8 +25,8 @@ export default function Book() {
   }
   return (
     <section className="kx-page min-h-[calc(100vh-68px)]">
-      <div className="mx-auto grid max-w-6xl gap-8 px-6 py-16 lg:grid-cols-[1fr_1.2fr]">
-        <Reveal from="left" className="kx-hero rounded-3xl p-10">
+      <div className="mx-auto grid max-w-6xl gap-6 px-4 py-10 sm:gap-8 sm:px-6 sm:py-16 lg:grid-cols-[1fr_1.2fr]">
+        <Reveal from="left" className="kx-hero rounded-3xl p-6 sm:p-10">
           <div className="kx-guilloche" />
           <div className="kx-hero-inner">
             <p className="kx-eyebrow-light">RESERVE</p>
@@ -42,15 +42,15 @@ export default function Book() {
                   key={s.slug}
                   className="kx-glass flex items-center justify-between px-4 py-3 text-sm"
                 >
-                  <span>{s.name}</span>
-                  <b>{s.price}</b>
+                  <span className="min-w-0">{s.name}</span>
+                  <b className="shrink-0 pl-3">{s.price}</b>
                 </li>
               ))}
             </ul>
             <p className="kx-live mt-8">Open daily, 10:00 am to 10:00 pm</p>
           </div>
         </Reveal>
-        <Reveal from="right" className="kx-card !rounded-3xl p-8 sm:p-10">
+        <Reveal from="right" className="kx-card !rounded-3xl p-5 sm:p-10">
           <form onSubmit={book} className="grid gap-5 sm:grid-cols-2">
             <input
               name="name"

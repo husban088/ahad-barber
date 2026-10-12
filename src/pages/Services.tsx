@@ -8,10 +8,10 @@ export default function Services() {
     <>
       <section className="kx-hero">
         <div className="kx-guilloche" />
-        <div className="kx-hero-inner mx-auto max-w-7xl px-6 py-16 md:py-20">
+        <div className="kx-hero-inner mx-auto max-w-7xl px-4 py-12 sm:px-6 md:py-20">
           <p className="hero-in kx-eyebrow-light">SIGNATURE MENU</p>
           <h1
-            className="hero-in mt-3 font-display text-5xl font-black sm:text-6xl"
+            className="hero-in mt-3 font-display text-4xl font-black min-[400px]:text-5xl sm:text-6xl"
             style={{ animationDelay: ".15s" }}
           >
             Services <span className="gold-text-light">&amp; prices</span>
@@ -27,7 +27,7 @@ export default function Services() {
       </section>
       <div className="pole" />
       <section className="kx-page">
-        <div className="mx-auto grid max-w-7xl gap-8 px-6 py-20 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mx-auto grid max-w-7xl gap-6 px-4 py-14 sm:grid-cols-2 sm:gap-8 sm:px-6 sm:py-20 lg:grid-cols-3">
           {services.map((s, i) => (
             <Reveal
               key={s.slug}
@@ -39,6 +39,9 @@ export default function Services() {
                   src={s.img}
                   alt={s.name}
                   fit="cover"
+                  pos={s.pos}
+                  then={s.then}
+                  art={s.art}
                   className="aspect-[3/4] w-full"
                 />
                 <span className="kx-chip absolute right-4 top-4 z-[2] !bg-white !text-navy-700 shadow-lg">
@@ -48,7 +51,7 @@ export default function Services() {
                   <p className="text-sm">{s.note}</p>
                 </div>
               </div>
-              <div className="p-6">
+              <div className="p-5 sm:p-6">
                 <h2 className="font-display text-2xl font-bold">{s.name}</h2>
                 <p className="mt-2 text-sm text-ink/60">{s.note}</p>
                 <Link

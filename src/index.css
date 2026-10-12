@@ -4,9 +4,18 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 84px; /* navbar ke neeche section title na chhupe */
+  -webkit-text-size-adjust: 100%;
 }
 body {
   @apply bg-white font-sans text-ink antialiased;
+  overflow-x: hidden;
+  min-width: 320px;
+}
+img,
+video,
+svg {
+  max-width: 100%;
 }
 
 ::-webkit-scrollbar {
@@ -580,9 +589,10 @@ body {
   display: inline-flex;
   align-items: center;
   height: 38px;
-  padding: 0 16px;
+  padding: 0 14px;
   border-radius: 999px;
   font-size: 14px;
+  white-space: nowrap;
   font-weight: 500;
   color: rgba(244, 244, 245, 0.72);
   transition:
@@ -669,6 +679,159 @@ body {
 .kx-menu-item--danger:hover {
   color: #fff;
   background: rgba(244, 63, 94, 0.25);
+}
+
+/* ---------- hamburger button ---------- */
+.kx-burger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.07);
+  cursor: pointer;
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.25s ease;
+}
+.kx-burger:hover {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+.kx-burger:active {
+  transform: scale(0.94);
+}
+
+/* ---------- sidebar drawer (mobile + tablet) ---------- */
+.kx-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 55;
+  background: rgba(0, 0, 0, 0.62);
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.35s ease,
+    visibility 0s linear 0.35s;
+}
+.kx-overlay.is-open {
+  opacity: 1;
+  visibility: visible;
+  transition:
+    opacity 0.35s ease,
+    visibility 0s;
+}
+.kx-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 60;
+  display: flex;
+  flex-direction: column;
+  width: 88%;
+  max-width: 360px;
+  height: 100vh;
+  height: 100dvh;
+  color: #fff;
+  background: linear-gradient(165deg, #1c1c20 0%, #09090b 60%, #000 100%);
+  border-left: 1px solid rgba(161, 161, 170, 0.25);
+  box-shadow: -30px 0 80px -20px rgba(0, 0, 0, 0.9);
+  padding-bottom: env(safe-area-inset-bottom);
+  transform: translateX(105%);
+  visibility: hidden;
+  transition:
+    transform 0.42s cubic-bezier(0.2, 0.8, 0.2, 1),
+    visibility 0s linear 0.42s;
+}
+.kx-drawer.is-open {
+  transform: none;
+  visibility: visible;
+  transition:
+    transform 0.42s cubic-bezier(0.2, 0.8, 0.2, 1),
+    visibility 0s;
+}
+.kx-drawer-link {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  min-height: 48px;
+  padding: 0 16px;
+  border-radius: 14px;
+  font-size: 15px;
+  font-weight: 500;
+  text-align: left;
+  color: rgba(244, 244, 245, 0.78);
+  border: 1px solid transparent;
+  opacity: 0;
+  transform: translateX(22px);
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease,
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+.kx-drawer.is-open .kx-drawer-link {
+  opacity: 1;
+  transform: none;
+}
+.kx-drawer-link:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+}
+.kx-drawer-link[aria-current="page"] {
+  color: #18181b;
+  font-weight: 600;
+  background: linear-gradient(135deg, #ffffff, #d4d4d8);
+  box-shadow: 0 10px 24px -12px rgba(161, 161, 170, 0.8);
+}
+
+/* ---------- touch screens: hover nahi hota, isliye captions hamesha dikhao ---------- */
+@media (hover: none) {
+  .kx-tile-cap {
+    opacity: 1;
+    transform: none;
+  }
+  .kx-tile::after {
+    opacity: 1;
+  }
+  .kx-card:hover {
+    transform: none;
+  }
+}
+
+/* ---------- chhoti screens ---------- */
+@media (max-width: 639px) {
+  .kx-btn-light,
+  .kx-btn-ghost-light {
+    padding: 12px 20px;
+  }
+  .kx-ring--a {
+    inset: -18px;
+  }
+  .kx-ring--b {
+    inset: -32px;
+  }
+  .kx-hero::after {
+    width: 300px;
+    height: 300px;
+    right: -150px;
+  }
+  .kx-guilloche {
+    width: 340px;
+    height: 340px;
+    left: -140px;
+    bottom: -150px;
+  }
 }
 
 /* ---------- footer ---------- */

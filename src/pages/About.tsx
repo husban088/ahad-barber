@@ -24,7 +24,7 @@ export default function About() {
     <>
       <section className="kx-hero">
         <div className="kx-guilloche" />
-        <div className="kx-hero-inner mx-auto grid max-w-7xl items-center gap-16 px-6 py-16 md:grid-cols-2 md:py-24">
+        <div className="kx-hero-inner mx-auto grid max-w-7xl items-center gap-12 px-4 py-12 sm:px-6 md:grid-cols-2 md:gap-16 md:py-24">
           <div className="relative mx-auto w-full max-w-sm pb-4 pr-4">
             <Reveal from="left">
               <Frame src={ABOUT_PHOTO} alt="Muhammad Ahad" rings />
@@ -36,7 +36,7 @@ export default function About() {
           </div>
           <Reveal from="right">
             <p className="kx-eyebrow-light">ABOUT THE BARBER</p>
-            <h1 className="mt-4 font-display text-5xl font-black sm:text-6xl">
+            <h1 className="mt-4 font-display text-4xl font-black min-[400px]:text-5xl sm:text-6xl">
               Muhammad <span className="gold-text-light">Ahad</span>
             </h1>
             <p className="kx-muted-light mt-6 max-w-md">
@@ -72,9 +72,9 @@ export default function About() {
       </section>
       <div className="pole" />
       <section className="kx-page">
-        <div className="mx-auto grid max-w-7xl gap-6 px-6 py-20 sm:grid-cols-3">
+        <div className="mx-auto grid max-w-7xl gap-5 px-4 py-14 sm:grid-cols-3 sm:gap-6 sm:px-6 sm:py-20">
           {values.map(([t, d], i) => (
-            <Reveal key={t} delay={i * 100} className="kx-card p-9">
+            <Reveal key={t} delay={i * 100} className="kx-card p-7 sm:p-9">
               <p className="font-display text-4xl font-black gold-text">
                 0{i + 1}
               </p>
@@ -84,20 +84,22 @@ export default function About() {
           ))}
         </div>
       </section>
-      <section className="bg-zinc-950 py-20 text-white">
-        <div className="mx-auto grid max-w-7xl items-center gap-12 px-6 md:grid-cols-2">
+      <section className="bg-zinc-950 py-14 text-white sm:py-20">
+        <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 sm:px-6 md:grid-cols-2 md:gap-12">
           <Reveal from="left" className="mx-auto w-full max-w-md">
             <div className="overflow-hidden rounded-[28px] border border-zinc-700 shadow-[0_40px_90px_-40px_rgba(0,0,0,1)]">
               <Photo
                 src={SHOWREEL_POSTER}
                 alt="Ahad at work"
+                fit="cover"
+                pos="50% 20%"
                 className="aspect-[3/4] w-full"
               />
             </div>
           </Reveal>
           <Reveal from="right">
             <p className="kx-eyebrow-light">AT WORK</p>
-            <h2 className="mt-3 font-display text-4xl font-black sm:text-5xl">
+            <h2 className="mt-3 font-display text-3xl font-black min-[400px]:text-4xl sm:text-5xl">
               Every client gets{" "}
               <span className="gold-text-light">full focus</span>
             </h2>

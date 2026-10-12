@@ -12,13 +12,32 @@ import Signup from "./pages/Signup";
 import Forgot from "./pages/Forgot";
 import Reset from "./pages/Reset";
 import Profile from "./pages/Profile";
+
+/** Page badalte hi upar jao; agar link me #styles / #gallery ho to wahin tak scroll karo */
 function ScrollTop() {
-  const { pathname } = useLocation();
+  const { pathname, hash } = useLocation();
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
+    if (!hash) {
+      window.scrollTo(0, 0);
+      return;
+    }
+    const id = decodeURIComponent(hash.slice(1));
+    let tries = 0;
+    let timer = 0;
+    const go = () => {
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      } else if (tries++ < 20) {
+        timer = window.setTimeout(go, 60);
+      }
+    };
+    timer = window.setTimeout(go, 50);
+    return () => window.clearTimeout(timer);
+  }, [pathname, hash]);
   return null;
 }
+
 export default function App() {
   return (
     <Layout>
